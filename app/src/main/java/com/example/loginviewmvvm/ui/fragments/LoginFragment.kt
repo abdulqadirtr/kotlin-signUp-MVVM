@@ -203,6 +203,8 @@ class LoginFragment : Fragment() {
             }
             CAMERA_REQUEST_CODE -> {
                 if (resultCode == Activity.RESULT_OK) {
+                    binding?.textViewOverlay?.visibility = View.GONE
+                    binding?.imageViewAvatar?.visibility = View.VISIBLE
                     val thumbnail = data?.extras?.get("data")
                     Glide.with(this)
                         .load(thumbnail as Bitmap?)
