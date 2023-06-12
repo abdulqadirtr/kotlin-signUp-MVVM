@@ -1,12 +1,5 @@
 package com.example.loginviewmvvm.ui.fragments
-
-import android.graphics.Color
 import android.os.Bundle
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
-import android.text.style.RelativeSizeSpan
-import android.text.style.UnderlineSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +9,8 @@ import com.example.loginviewmvvm.R
 import com.example.loginviewmvvm.databinding.FragmentConfirmationBinding
 import com.example.loginviewmvvm.ui.viewmodel.LoginViewModel
 import com.example.loginviewmvvm.ui.viewmodel.LoginViewModelFactory
-
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 
 class ConfirmationFragment : Fragment() {
 
@@ -24,6 +18,9 @@ class ConfirmationFragment : Fragment() {
 
     private val binding get() = _binding!!
     private lateinit var loginViewModel: LoginViewModel
+
+    private lateinit var onBackPressedCallback: OnBackPressedCallback
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,25 +47,14 @@ class ConfirmationFragment : Fragment() {
                 binding.welcomeMessage.text = welcomeMessage
                 binding.textViewEmail.text = it.email
                 binding.imageViewPhoto.setImageURI(it.photoUri)
-                if (it.website.isNotEmpty()) {
-                    val spannableString = SpannableString(it.website)
-                    spannableString.setSpan(
-                        UnderlineSpan(),
-                        0,
-                        it.website.length,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                    spannableString.setSpan(
-                        ForegroundColorSpan(Color.BLUE),
-                        0,
-                        it.website.length,
-                        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                    )
-                    binding.textViewWebsite.text = spannableString
+                 binding.textViewWebsite.text = it.website
                 }
             }
+        // Enable back button press for the Fragment
+        requireActivity().onBackPressedDispatcher.addCallback(this) {
+                requireActivity().supportFragmentManager.popBackStack()
+            }
         }
-    }
 
 
     override fun onDestroyView() {

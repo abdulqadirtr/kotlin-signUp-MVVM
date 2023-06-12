@@ -139,6 +139,7 @@ class LoginFragment : Fragment() {
             val confirmationFragment = ConfirmationFragment()
             requireActivity().supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container_view, confirmationFragment)
+                .addToBackStack(null)
                 .commit()
         }
     }

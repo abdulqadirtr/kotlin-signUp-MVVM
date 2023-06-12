@@ -11,4 +11,7 @@
     <color name="button_enable_color">#FFFF0000</color>
     <color name="button_disable_color">#80808080</color>
 
+    <color name="dark_gray">#333333</color>
+    <color name="blue">#0000FF</color>
+
 </resources>
