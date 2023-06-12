@@ -10,6 +10,7 @@ LoginViewMVVM is an Android application that demonstrates a simple login view us
 - MVVM architecture pattern for separation of concerns.
 - Data Binding for declarative UI updates.
 - ViewModel and LiveData for managing and observing data changes.
+- SharedViewModel is used for sharing data to other fragments.
 
 ## Best Practisces 
 The applicatioin follows best practices. Here's a summary of the best practices followed in this code:
